@@ -1,0 +1,7 @@
+text_to_uppercase：用于将序列文件内容中的小写字母全部转换为大写字母。
+merge_sequences：用于将一个文件夹内的序列合并为一个文件。
+extract_sequences：用于提取一个多序列文件中的一个或多个指定序列。
+remove_sequences：用于删除一个序列文件中的一个或多个指定序列。
+rename_sequences：用于一个文件内的所有序列进行重命名。
+complement_sequences：用于一个文件内的一个或多个序列进行互补。包括仅互补和反向互补两种选择。
+extract_sequence_info：提取一个文件中的一个或多个序列的序列ID及描述。
