@@ -1,0 +1,7 @@
+text_to_uppercase:Used to convert all lowercase letters in the sequence file content to uppercase letters.
+merge_sequences:Used to merge sequences within a folder into a single file.
+extract_sequences:Used to extract one or more specified sequences from a multi-sequence file.
+remove_sequences:Used to delete one or more specified sequences from a sequence file.
+rename_sequences:Used to rename all sequences in a file.
+complement_sequences:Used for complementing one or more sequences within a file, including options for complementary only and reverse complementary.
+extract_sequence_info:Extract the sequence IDs and descriptions of one or more sequences from a file.
