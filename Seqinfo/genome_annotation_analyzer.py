@@ -40,6 +40,7 @@ class GenomeAnnotationAnalyzer:
         for record in SeqIO.parse(self.input_file, "genbank"):
             data = {}
             
+            # Extract basic information
             data['Sequence ID'] = record.id
             data['Sequence Name'] = record.name
             data['Species Name'] = self._extract_organism(record)
@@ -49,6 +50,7 @@ class GenomeAnnotationAnalyzer:
             data['Molecule Type'] = record.annotations.get('molecule_type', 'DNA')
             data['Taxonomy'] = self._extract_taxonomy(record)
             
+            # Gene statistics
             gene_counts = defaultdict(int)
             rrna_count = 0
             trna_count = 0
@@ -56,9 +58,11 @@ class GenomeAnnotationAnalyzer:
             cds_count = 0
             gene_count = 0
             
+            # Iterate through all features
             for feature in record.features:
                 feature_type = feature.type.lower()
                 
+                # Count gene types
                 if feature_type == 'gene':
                     gene_count += 1
                     gene_type = feature.qualifiers.get('gene_type', ['unknown'])[0]
@@ -82,20 +86,24 @@ class GenomeAnnotationAnalyzer:
                 elif feature_type in ['ncrna', 'ncrna_gene', 'non_coding_rna', 'misc_rna']:
                     other_rna_count += 1
             
+            # Fill gene statistics
             data['Total Genes'] = gene_count
             data['CDS Count'] = cds_count
             data['rRNA Count'] = rrna_count
             data['tRNA Count'] = trna_count
             data['Other ncRNA Count'] = other_rna_count
             
+            # Other gene types
             for gene_type, count in gene_counts.items():
                 if gene_type != 'unknown':
                     data[f'{gene_type} Count'] = count
             
+            # Other annotation information
             data['Annotation Date'] = record.annotations.get('date', 'N/A')
             data['Data Version'] = record.annotations.get('data_file_division', 'N/A')
             data['Annotation Source'] = record.annotations.get('source', 'N/A')
             
+            # GC content
             gc_count = record.seq.upper().count('G') + record.seq.upper().count('C')
             data['GC Content (%)'] = f"{(gc_count / len(record.seq) * 100):.2f}" if len(record.seq) > 0 else '0'
             
@@ -123,6 +131,7 @@ class GenomeAnnotationAnalyzer:
                 data['Species Name'] = self._extract_organism_from_gff(rec)
                 data['Description'] = rec.description
                 
+                # Gene statistics
                 gene_counts = defaultdict(int)
                 rrna_count = 0
                 trna_count = 0
@@ -174,6 +183,7 @@ class GenomeAnnotationAnalyzer:
                 if not line or line.startswith('#'):
                     continue
                 
+                # Parse sequence line
                 if line.startswith('##sequence-region'):
                     parts = line.split()
                     if len(parts) >= 4:
@@ -183,6 +193,7 @@ class GenomeAnnotationAnalyzer:
                         except ValueError:
                             pass
                 
+                # Parse feature line
                 if line.startswith('##'):
                     continue
                 
@@ -195,6 +206,7 @@ class GenomeAnnotationAnalyzer:
                 
                 seq_ids.add(seq_id)
                 
+                # Count genes
                 if feature_type == 'gene':
                     gene_count += 1
                 elif feature_type == 'cds':
@@ -206,6 +218,7 @@ class GenomeAnnotationAnalyzer:
                 elif feature_type in ['ncrna', 'ncrna_gene', 'non_coding_rna']:
                     other_rna_count += 1
         
+        # Use filename as identifier
         seq_id = os.path.splitext(os.path.basename(self.input_file))[0]
         
         data['Sequence ID'] = seq_id
@@ -234,9 +247,11 @@ class GenomeAnnotationAnalyzer:
             data['Genome Length'] = len(record.seq)
             data['Molecule Type'] = 'DNA/RNA'
             
+            # Calculate GC content
             gc_count = record.seq.upper().count('G') + record.seq.upper().count('C')
             data['GC Content (%)'] = f"{(gc_count / len(record.seq) * 100):.2f}" if len(record.seq) > 0 else '0'
             
+            # FASTA files typically have no gene annotations
             data['Total Genes'] = 'N/A'
             data['CDS Count'] = 'N/A'
             data['rRNA Count'] = 'N/A'
@@ -301,10 +316,12 @@ def export_to_excel(data, output_file=None):
         print("Error: No data to export")
         return None
     
+    # Get all possible columns
     all_columns = set()
     for record_data in data.values():
         all_columns.update(record_data.keys())
     
+    # Sort columns in reasonable order
     priority_columns = [
         'Sequence ID', 'Sequence Name', 'Species Name', 'Description', 'Genome Length',
         'Topology', 'Molecule Type', 'Taxonomy', 'GC Content (%)',
@@ -315,16 +332,20 @@ def export_to_excel(data, output_file=None):
     other_columns = sorted(all_columns - set(priority_columns))
     columns = [col for col in priority_columns if col in all_columns] + other_columns
     
+    # Create DataFrame
     df = pd.DataFrame.from_dict(data, orient='index', columns=columns)
     df.reset_index(drop=True, inplace=True)
     
+    # If output filename not specified, use first sequence ID
     if output_file is None:
         first_id = list(data.keys())[0]
         output_file = f"{first_id}.xlsx"
     
+    # Ensure correct file extension
     if not output_file.endswith('.xlsx'):
         output_file += '.xlsx'
     
+    # Export to Excel
     df.to_excel(output_file, index=False, engine='openpyxl')
     print(f"\nResults successfully exported to: {output_file}")
     print(f"\nNumber of records extracted: {len(data)}")
@@ -340,6 +361,7 @@ def main():
     print("=" * 60)
     print()
     
+    # Check command line arguments
     if len(sys.argv) < 2:
         print("Usage:")
         print("  python genome_annotation_analyzer.py <input_file> [output_file] [--debug]")
@@ -365,23 +387,28 @@ def main():
     output_file = None
     debug_mode = False
     
+    # Parse arguments
     for arg in sys.argv[2:]:
         if arg == '--debug':
             debug_mode = True
         elif not arg.startswith('--'):
             output_file = arg
     
+    # Check if input file exists
     if not os.path.exists(input_file):
         print(f"Error: File not found: {input_file}")
         sys.exit(1)
     
     try:
+        # If debug mode, display all features first
         if debug_mode and input_file.endswith(('.gb', '.gbk')):
             debug_genbank_features(input_file)
         
+        # Analyze file
         analyzer = GenomeAnnotationAnalyzer(input_file)
         data = analyzer.analyze()
         
+        # Display analysis results summary
         print("\n" + "=" * 60)
         print("Analysis Results Summary:")
         print("=" * 60)
@@ -391,6 +418,7 @@ def main():
             for key, value in sorted(record_data.items()):
                 print(f"  {key}: {value}")
         
+        # Export to Excel
         export_to_excel(data, output_file)
         
     except Exception as e:
