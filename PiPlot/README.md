@@ -251,8 +251,8 @@ Significant genes are sorted in the following order:
 If you use this program in your research, please cite:
 
 ```
-Pi Sliding Window Gene Labeling Program
-https://github.com/MingyuanZhang/pi_plot
+PiPlot Program
+https://github.com/Zmy0912/Bioinfo/tree/master/PiPlot
 ```
 
 ## License
