@@ -127,3 +127,6 @@ Version numbers use `MAJOR.MINOR.PATCH` format:
 ## Version History
 [1.1.0]: https://github.com/Zmy0912/Bioinfo/tree/master/PiPlot/v1.1.0
 [1.0.0]: https://github.com/Zmy0912/Bioinfo/tree/master/PiPlot/v1.0.0
+
+---
+END
