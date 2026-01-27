@@ -61,6 +61,13 @@ Extract sequence IDs and descriptions from one or more sequences in a file.
 
 ---
 
+### fasta_cleaner_gui
+A visual sequence processing tool for removing illegal characters from sequences.
+
+**Usage:** Run the script and operate step by step through the visual interface.
+
+---
+
 ## Quick Start
 
 1. Open any of the scripts listed above
