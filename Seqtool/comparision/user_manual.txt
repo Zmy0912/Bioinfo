@@ -1,0 +1,595 @@
+FASTA Sequence Comparison Tool - User Manual
+========================================
+
+[Tool Introduction]
+The FASTA Sequence Comparison Tool is a desktop application for comparing sequences across multiple FASTA files.
+It automatically identifies sequences common to all files and unique sequences for each file, providing detailed
+statistical information and a visual interface.
+
+[System Requirements]
+- Python 3.6 or higher
+- Windows / macOS / Linux operating system
+- No additional dependencies required
+
+[Installation and Launch]
+1. Ensure Python 3.x is installed
+   Enter in command line: python --version to check version
+
+2. Launch program
+   Method 1: Double-click "fasta_compare.bat" file
+   Method 2: Run in command line: python fasta_compare.py
+
+[Features]
+1. Compare sequences from multiple FASTA files
+2. Identify sequences common to all files
+3. Identify sequences unique to each file
+4. Visual graphical interface, easy to operate
+5. Provide detailed statistics and frequency distribution
+6. Support viewing detailed content of any sequence
+7. Support exporting common and unique sequences
+
+[Usage]
+
+I. Launch Program
+- Double-click "fasta_compare.bat" file to launch the program
+- Program window size: 1200x800 pixels
+
+II. Load Data
+1. Click "Select Folder" button in the top toolbar
+2. Browse and select folder containing FASTA files (e.g., CDS folder)
+3. Program automatically loads all .fasta and .fa files
+4. File list will appear in "Loaded Files" area
+
+III. Compare Sequences
+1. After files are loaded, click "Start Comparison" button
+2. Program automatically analyzes sequences in all files
+3. During comparison, status bar displays "Comparing sequences..."
+4. After completion, status bar displays "Comparison complete!"
+
+IV. View Results
+Program provides 4 tabs, can switch by clicking tab labels:
+
+[Tab 1: Common Sequences]
+Function: Display sequences present in all files
+Display content:
+  - Sequence name: Gene/sequence name extracted from header
+  - Count: Number of times the sequence appears in files
+  - Files: List of files containing this sequence
+Operations:
+  - Double-click any sequence to view details in "Sequence Viewer" tab
+  - Use scrollbar to view all common sequences
+
+[Tab 2: Unique Sequences]
+Function: Display sequences unique to each file (sequences present in only one file)
+Display content:
+  - Sequence name: Name of the sequence
+  - Source file: File containing this sequence
+Operations:
+  - Double-click any sequence to view details in "Sequence Viewer" tab
+
+[Tab 3: Statistics]
+Function: Display detailed statistics and data distribution
+Display content:
+  - Number of files compared
+  - Number of sequences in each file
+  - Total number of distinct sequences
+  - Number of sequences common to all files
+  - Number of unique sequences for each file
+  - Sequence frequency distribution (number of sequences appearing in N files)
+
+[Tab 4: Sequence Viewer]
+Function: View detailed information and tools for specific sequences
+Usage:
+1. Enter or select sequence name in "Sequence Name" dropdown
+2. Specify source file in "Source File" dropdown (optional)
+3. Click "View" button to display sequence content
+Display content:
+  - File name
+  - Complete sequence ID (header)
+  - Sequence length (bp)
+  - Complete sequence content
+Tool buttons:
+  - Copy: Copy current viewing sequence to clipboard
+  - Export: Save current viewing sequence as FASTA file
+
+V. Export Results
+
+[Export Common Sequences]
+Steps:
+1. After completing comparison, click "Export Common Sequences" button
+2. Select save location and file name (e.g., common_sequences.fasta)
+3. Click "Save"
+Output format:
+  - Each sequence's header will have source file marker added
+  - Format: >complete header|source filename
+  - Original sequence content preserved
+
+[Export Unique Sequences]
+Steps:
+1. After completing comparison, click "Export Unique Sequences" button
+2. Select save folder
+3. Program automatically creates output files for each file with unique sequences
+Output files:
+  - File name format: original_filename_unique.fasta
+  - Example: file1_unique.fasta, file2_unique.fasta
+  - Each file contains only that file's unique sequences
+
+[Export Single Sequence]
+Steps:
+1. View the sequence to export in "Sequence Viewer" tab
+2. Click "Export" button
+3. Select save location and file name
+4. Click "Save"
+
+VI. Other Functions
+
+[Clear]
+- Clear all loaded data
+- Clear all displayed results
+- Return to initial state
+- Suitable for starting a new comparison task
+
+[Copy]
+- Copy current viewing sequence content to clipboard
+- Convenient for pasting to other applications
+
+[Export]
+- Save current viewing sequence as FASTA file
+- Can export single sequence
+
+VII. Sequence Name Recognition Rules
+
+Program automatically extracts sequence names from headers (removing position information and extra annotations):
+
+Rule 1: Contains "_join{" marker
+  Example: >rps12_join{...}|A10.fasta
+  Extract: rps12
+
+Rule 2: Contains "[_" marker
+  Example: >psbA_[76:1137](-)
+  Extract: psbA
+
+Rule 3: Contains "[" marker
+  Example: >gene_name[some_info]
+  Extract: gene_name
+
+Rule 4: Other cases
+  Use complete header as identifier
+
+VIII. Example: Compare CDS sequences from multiple species
+
+Scenario: You have CDS FASTA files from multiple species and want to find:
+- Genes common to all species (conserved genes)
+- Genes unique to each species
+
+Steps:
+1. Place all CDS FASTA files in same folder (e.g., CDS/)
+2. Launch program, click "Select Folder", select CDS folder
+3. Click "Start Comparison"
+4. Switch to "Common Sequences" tab
+   - View genes common to all species (e.g., rbcL, matK, etc.)
+   - Double-click any gene to view detailed sequence
+5. Switch to "Unique Sequences" tab
+   - View genes unique to each species
+   - Understand specificity of each species
+6. Switch to "Statistics" tab
+   - View sequence count for each file
+   - View sequence frequency distribution
+   - Understand overall data situation
+7. Click "Export Common Sequences"
+   - Save as common_genes.fasta
+   - For subsequent conservation analysis
+8. Click "Export Unique Sequences"
+   - Save to output folder
+   - Unique genes for each species saved to separate files
+
+IX. Notes
+
+1. FASTA file format requirements:
+   - Must start with ">" header
+   - New line after header, then sequence content
+   - Sequences can span multiple lines
+
+2. File encoding:
+   - Recommend using UTF-8 encoding
+   - If garbled text appears, check file encoding
+
+3. Sequence comparison rules:
+   - Based on header name matching
+   - Does not compare sequence content
+   - Same sequence name treated as same sequence
+
+4. Large file processing:
+   - Supports files with large number of sequences
+   - Processing large files may take longer, please be patient
+
+5. File overwriting:
+   - Export will overwrite files with same name
+   - Please confirm before proceeding
+
+X. Troubleshooting
+
+[Problem: Program won't start]
+Cause: Python not installed or Python version too low
+Solution:
+  - Check Python installation: python --version
+  - If not installed, download and install from https://python.org
+  - Ensure Python 3.6 or higher is installed
+
+[Problem: Can't find FASTA files]
+Cause: Selected folder has no .fasta or .fa files
+Solution:
+  - Ensure file extension is .fasta or .fa
+  - Check if files are in subfolders
+
+[Problem: Display garbled text]
+Cause: FASTA file encoding is not UTF-8
+Solution:
+  - Use text editor (e.g., Notepad++) to check file encoding
+  - Convert to UTF-8 encoding and save
+
+[Problem: Sequence recognition incorrect]
+Cause: Header format doesn't match recognition rules
+Solution:
+  - Check header format
+  - Use "Sequence Viewer" to view complete header information
+  - If needed, manually modify header format
+
+[Problem: Comparison slow]
+Cause: Many files or large number of sequences
+Solution:
+  - Wait for program to complete, don't force close
+  - Consider comparing in batches
+  - Close other applications using system resources
+
+XI. Best Practices
+
+1. Organize FASTA files in same folder before comparison
+2. Use meaningful file names for easy identification
+3. Maintain consistency in header format
+4. Regularly save comparison results to avoid data loss
+5. Use with "Sample Classification Tool", compare first then classify
+6. Verify file content correctness after exporting results
+
+XII. Working with Other Tools
+
+Recommended workflow:
+1. Use "FASTA Sequence Comparison Tool" to compare multiple FASTA files
+2. Export common or unique sequences
+3. Use "FASTA Sample Classification Tool" to classify exported sequences by sample
+4. Get sample-organized FASTA files for further analysis
+
+This achieves:
+- Multi-file comparison → Extract target sequences → Classify by sample → Further analysis
+
+=======================================
+Sample Classification Tool - User Manual
+=======================================
+
+[Tool Introduction]
+The FASTA Sample Classification Tool is a desktop application for classifying sequences in mixed FASTA files by sample names.
+It automatically recognizes sample names in sequence identifiers and supports selective export of one or more samples.
+
+[System Requirements]
+- Python 3.6 or higher
+- Windows / macOS / Linux operating system
+- No additional dependencies required
+
+[Installation and Launch]
+1. Ensure Python 3.x is installed
+   Enter in command line: python --version to check version
+
+2. Launch program
+   Method 1: Double-click "fasta_classifier.bat" file
+   Method 2: Run in command line: python fasta_classifier.py
+
+[Features]
+1. Classify sequences in mixed FASTA files by sample
+2. Automatically recognize sample names in sequence identifiers
+3. Support selective export of one or more samples
+4. Visual graphical interface, easy to operate
+5. Display sequence count and total length for each sample
+6. Support previewing sequence content of any sample
+
+[Usage]
+
+I. Launch Program
+- Double-click "fasta_classifier.bat" file to launch program
+- Program window size: 1200x800 pixels
+
+II. Load File
+1. Click "Select File" button in top toolbar
+2. Browse and select FASTA file to process (e.g., redtr.fasta)
+3. Program automatically parses file and recognizes samples
+4. File information displays in "File Information" area
+
+III. View Sample List
+Left side shows all recognized samples:
+- Sample name: Sample name extracted from header
+- Sequence count: Number of sequences in that sample
+- Total length: Total length (bp) of all sequences in that sample
+Operations:
+  - Click checkbox before sample name (☐/☑) to select/deselect
+  - Click sample name to view all sequences for that sample on right side
+
+IV. Select Samples to Export
+
+Method 1: Click checkbox
+  - Click checkbox before sample name to toggle selection
+  - ☐ means unselected, ☑ means selected
+
+Method 2: Use shortcut buttons
+  - "Select All" button: Select all samples
+  - "Deselect All" button: Deselect all selections
+
+Selected samples will be exported, unselected samples will not be exported.
+
+V. Export Samples
+
+[Export All Samples]
+Steps:
+1. Load FASTA file
+2. Click "Export All Samples" button
+3. Select save folder
+4. Program creates separate FASTA file for each sample
+Output files:
+  - File name format: sample_name.fasta
+  - Example: A10.fasta, A11.fasta, A12.fasta
+  - Original FASTA header format preserved
+
+[Export Selected Samples]
+Steps:
+1. Load FASTA file
+2. Check samples to export in sample list
+3. Click "Export Selected Samples" button
+4. Select save folder
+5. Program only exports checked samples
+Output files:
+  - Creates FASTA files only for selected samples
+  - Other features same as "Export All Samples"
+
+VI. View Sequence Details
+
+Steps:
+1. Click any sample name in left sample list
+2. Top right shows all sequences for that sample
+3. Click any sequence in the list
+4. Bottom right shows complete sequence content
+
+Display content:
+- Sequence ID (complete header)
+- Sequence length (bp)
+- Complete sequence content
+
+VII. Sample Name Recognition Rules
+
+Program tries following formats in priority order:
+
+[Format 1: Pipe separator + .fasta suffix]
+Example: >rps12_join{...}|A10.fasta
+Recognize: A10
+
+[Format 2: Pipe separator, no suffix]
+Example: >gene_name|A10
+Recognize: A10
+
+[Format 3: Space separator + .fasta suffix]
+Example: >gene_name A10.fasta
+Recognize: A10
+
+[Format 4: End directly with .fasta]
+Example: >rps12_A10.fasta
+Recognize: rps12_A10
+
+[Format 5: Other cases]
+Try to extract last part containing letters and numbers
+If cannot recognize, mark as "unknown"
+
+Note: Program automatically removes .fasta and .fa suffixes
+
+VIII. Example: Process CDS sequences from multiple samples
+
+Scenario: You have a redtr.fasta file containing CDS sequences from multiple samples,
+want to classify into separate files by sample.
+
+File content example:
+>rps12_join{...}|A10.fasta
+ATGCGTACG...
+>cemA_[...] |A11.fasta
+ATGCGTACG...
+>psbA_[76:1137](-)|A12.fasta
+ATGCGTACG...
+
+Steps:
+1. Launch program, click "Select File"
+2. Select redtr.fasta file
+3. View sample list:
+   - Program automatically recognizes samples: A10, A11, A12, etc.
+   - Shows sequence count and total length for each sample
+4. Click sample name (e.g., A10)
+   - Right side shows all sequences for A10 sample
+   - Click sequence to view detailed content
+5. Select export method:
+   Method 1: Export all samples
+   - Click "Select All" (optional, default is all selected)
+   - Click "Export All Samples"
+   - Select save folder
+   - Program generates: A10.fasta, A11.fasta, A12.fasta, etc.
+
+   Method 2: Selective export
+   - Check only needed samples (e.g., A10 and A11)
+   - Click "Export Selected Samples"
+   - Select save folder
+   - Program generates only: A10.fasta, A11.fasta
+
+IX. Notes
+
+1. Sample name uniqueness:
+   - Ensure different samples have unique identifiers
+   - Avoid duplicate sample names
+
+2. File overwriting:
+   - Export will overwrite files with same name
+   - Please confirm before proceeding
+
+3. Encoding format:
+   - Recommend using UTF-8 encoded FASTA files
+
+4. Header format:
+   - Maintain consistency in header format
+   - Helps correct sample recognition
+
+5. Large file processing:
+   - Processing large files may take longer
+   - Please be patient, don't force close
+
+6. unknown samples:
+   - If header cannot be recognized, sample marked as "unknown"
+   - Can check header format of that sequence
+
+X. Troubleshooting
+
+[Problem: Can't recognize sample name]
+Cause: Header format doesn't match recognition rules
+Solution:
+  - Check header format
+  - Ensure sample identifier is present
+  - Reference sample name recognition rules
+
+[Problem: Wrong number of recognized samples]
+Cause: Some sequence header formats not uniform
+Solution:
+  - Unify header formats for all sequences
+  - Check for special separators
+  - Manually adjust unrecognized headers
+
+[Problem: Exported files are empty]
+Cause: Selected samples have no sequences, or recognized as "unknown"
+Solution:
+  - Check sample recognition results
+  - Confirm there are valid samples
+  - View "unknown" sample content
+
+[Problem: Program won't start]
+Cause: Python not installed or Python version too low
+Solution:
+  - Check Python installation: python --version
+  - If not installed, download and install from https://python.org
+  - Ensure Python 3.6 or higher is installed
+
+[Problem: Display garbled text]
+Cause: FASTA file encoding is not UTF-8
+Solution:
+  - Use text editor (e.g., Notepad++) to check file encoding
+  - Convert to UTF-8 encoding and save
+
+XI. Best Practices
+
+1. Use consistent header format when generating FASTA files
+2. Use clear, meaningful sample names
+3. Backup original files before exporting
+4. Use "Select All" function to batch process all samples
+5. Spot-check some files after export to ensure correctness
+6. Use with "FASTA Sequence Comparison Tool"
+
+XII. Working with Other Tools
+
+Recommended workflow:
+1. Use "FASTA Sequence Comparison Tool" to compare multiple FASTA files
+2. Export common or unique sequences
+3. Use "Sample Classification Tool" to load exported sequences
+4. Classify by sample name and export
+5. Get sample-organized FASTA files
+
+This achieves:
+- Multi-file comparison → Extract target sequences → Classify by sample → Easy further analysis
+
+XIII. Application Scenarios
+
+1. Multi-sample genomic analysis
+   - Classify mixed gene sequences by sample
+   - Facilitate subsequent population genetics analysis
+
+2. Species comparison studies
+   - Organize sequence data from different species
+   - Organize sequence files by species
+
+3. Population genetics
+   - Organize sequences by population or population group
+   - Facilitate calculation of population parameters
+
+4. Data preprocessing
+   - Prepare sample-organized data for downstream analysis
+   - Improve analysis efficiency
+
+5. Quality control
+   - Check sequence completeness for each sample
+   - Identify abnormal samples
+
+XIV. Interface Operation Tips
+
+1. Checkbox operations:
+   - Click checkbox area in first column to toggle selection
+   - Don't click sample name area
+
+2. Sample preview:
+   - Click sample name to preview sequences
+   - Doesn't affect selection state
+
+3. Sequence viewing:
+   - Double-click sequence to view complete content
+   - Or click then view in text box below
+
+4. Clear operation:
+   - Click "Clear" button to clear all data
+   - Suitable for starting new task
+
+================================
+
+FAQ (Frequently Asked Questions)
+
+Q1: What's the difference between the two tools?
+A1: FASTA Sequence Comparison Tool compares multiple FASTA files to find common and unique sequences;
+   Sample Classification Tool classifies sequences in a mixed file by sample into multiple files.
+
+Q2: How many files can be processed at once?
+A2: FASTA Sequence Comparison Tool can process multiple files simultaneously, no hard limit,
+   depends on file size and system performance.
+
+Q3: Which FASTA formats are supported?
+A3: Supports standard FASTA format, header starts with ">", sequence starts after new line.
+   Supports both .fasta and .fa file extensions.
+
+Q4: Is sequence comparison based on sequence content or header?
+A4: FASTA Sequence Comparison Tool compares based on header names, not sequence content.
+
+Q5: Can I use it on Mac or Linux?
+A5: Yes, but need to run Python script directly, not .bat file.
+   Use command: python fasta_compare.py or python fasta_classifier.py
+
+Q6: How to check Python version?
+A6: Enter in command line: python --version or python3 --version
+
+Q7: What software can open exported FASTA files?
+A7: Can open with any text editor (Notepad++, VS Code, etc.),
+   or with professional bioinformatics software (e.g., MEGA, Geneious, etc.).
+
+Q8: How long does it take to process large files?
+A8: Depends on file size and sequence count. Usually files with thousands of sequences
+   complete in seconds to minutes. If processing takes too long, please be patient.
+
+Q9: Will the program modify original files?
+A9: No, program only reads original files, makes no modifications. Exported files are
+   newly created and won't affect original data.
+
+Q10: How to contact developer for help?
+A10: Please check project documentation or contact project administrator.
+
+================================
+
+Version Information
+- FASTA Sequence Comparison Tool: v1.0.0
+- Sample Classification Tool: v1.0.0
+- Updated: 2025
+
+================================
