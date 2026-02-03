@@ -1,0 +1,7 @@
+>sequence_with_invalid_chars
+ATCG12345@#$%^&*()_+{}:"<>?
+GCTAG-CTAG  12345
+
+>another_sequence
+AATTCCGG  This is text in sequence
+TTAA 1234 numbers

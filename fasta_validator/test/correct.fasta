@@ -1,0 +1,9 @@
+>seq1 Sample sequence 1
+ATCGATCGATCGATCGATCG
+GCTAGCTAGCTAGCTAGCTA
+>seq2 Sample sequence 2
+TTAATTAATTAA
+GGCCGGCC
+>seq3 Sample sequence 3 with gaps
+A---TGCA
+TGC---AT

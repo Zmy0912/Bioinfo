@@ -1,0 +1,9 @@
+sequence 1 without > symbol
+ATCGATCGATCG
+GCTAGCTAGCTA
+
+>sequence2 with correct format
+TTAATTAATTAA
+
+sequence3 missing > again
+GGCCGGCC
