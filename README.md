@@ -23,5 +23,5 @@ If you encounter any issues or have questions, feel free to contact me via:
 - 🐛 **Issues**: Submit an issue in the project repository
 
 ---
-
+[![DOI](https://zenodo.org/badge/1126082991.svg)](https://doi.org/10.5281/zenodo.18472731)
 **Thank you for visiting my project!**

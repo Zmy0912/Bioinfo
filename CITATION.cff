@@ -15,6 +15,7 @@ authors:
     email: myzhang0726@foxmail.com
 repository-code: 'https://github.com/Zmy0912/Bioinfo'
 url: 'https://github.com/Zmy0912/Bioinfo'
+doi: 10.5281/zenodo.18472732
 abstract: >-
   This project provides a collection of simple and practical
   bioinformatics tools for biological sequence data
