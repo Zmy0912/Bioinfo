@@ -1,86 +1,28 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
-title: "Bioinformatics Tools for Sequence Processing and Analysis"
+title: >-
+  Bioinfo: tools for biological sequence data processing and
+  analysis.
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
 type: software
-url: "https://github.com/Zmy0912/Seq_ChuLi"
-version: "1.0.0"
-date-released: "2026-01-01"
-doi: "10.5281/zenodo.XXXXXX"
-
 authors:
-  - family-names: Zhang
-    given-names: Mingyuan
+  - given-names: Mingyuan
+    family-names: Zhang
     email: myzhang0726@foxmail.com
-    orcid: "https://orcid.org/0000-0000-0000-0000"
-
-license: MIT
-license-url: "https://opensource.org/licenses/MIT"
-
+repository-code: 'https://github.com/Zmy0912/Bioinfo'
+url: 'https://github.com/Zmy0912/Bioinfo'
+abstract: >-
+  This project provides a collection of simple and practical
+  bioinformatics tools for biological sequence data
+  processing and analysis.
 keywords:
-  - bioinformatics
-  - sequence-analysis
-  - fasta
-  - genbank
-  - phylogenetics
-  - genomics
-  - python
-  - visualization
-
-abstract: |
-  This project provides a collection of simple and practical bioinformatics tools for biological sequence data processing and analysis. It includes tools for FASTA validation, GenBank to MVISTA conversion, heatmap visualization, MISA parsing, sequence information extraction, and various sequence manipulation utilities. The tools support both English and partial Chinese interfaces, with a focus on user experience and batch processing capabilities.
-
-identifiers:
-  - type: github
-    value: Zmy0912/Seq_ChuLi
-  - type: doi
-    value: 10.5281/zenodo.XXXXXX
-
-preferred-citation:
-  type: article
-  authors:
-    - family-names: Zhang
-      given-names: Mingyuan
-  title: "Bioinformatics Tools for Sequence Processing and Analysis"
-  year: 2026
-  journal: "Journal of Open Source Software"
-  volume: "1"
-  issue: "1"
-  pages: "1"
-  doi: "10.5281/zenodo.XXXXXX"
-
-references:
-  - type: software
-    title: "FASTA Validator"
-    authors:
-      - family-names: Zhang
-        given-names: Mingyuan
-    year: 2026
-    url: "https://github.com/Zmy0912/Seq_ChuLi/tree/main/fasta_validator"
-  - type: software
-    title: "GenBank to MVISTA Converter"
-    authors:
-      - family-names: Zhang
-        given-names: Mingyuan
-    year: 2026
-    url: "https://github.com/Zmy0912/Seq_ChuLi/tree/main/genbank_to_mvista_converter"
-  - type: software
-    title: "Heatmap Visualizer"
-    authors:
-      - family-names: Zhang
-        given-names: Mingyuan
-    year: 2026
-    url: "https://github.com/Zmy0912/Seq_ChuLi/tree/main/Heatmap"
-  - type: software
-    title: "MISA Tool"
-    authors:
-      - family-names: Zhang
-        given-names: Mingyuan
-    year: 2026
-    url: "https://github.com/Zmy0912/Seq_ChuLi/tree/main/MISAtool"
-  - type: software
-    title: "Sequence Tool"
-    authors:
-      - family-names: Zhang
-        given-names: Mingyuan
-    year: 2026
-    url: "https://github.com/Zmy0912/Seq_ChuLi/tree/main/Seqtool"
+  - Seq
+license: MIT
+commit: >-
+  sha256:fa490a21550961881205451a1e62fc935a15e454e8b0e704f1257ea6c5285539
+version: v1.1.0
+date-released: '2026-02-04'
