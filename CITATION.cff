@@ -9,7 +9,7 @@ doi: "10.5281/zenodo.XXXXXX"
 
 authors:
   - family-names: Zhang
-    given-names: My
+    given-names: Mingyuan
     email: myzhang0726@foxmail.com
     orcid: "https://orcid.org/0000-0000-0000-0000"
 
@@ -39,7 +39,7 @@ preferred-citation:
   type: article
   authors:
     - family-names: Zhang
-      given-names: My
+      given-names: Mingyuan
   title: "Bioinformatics Tools for Sequence Processing and Analysis"
   year: 2026
   journal: "Journal of Open Source Software"
@@ -53,34 +53,34 @@ references:
     title: "FASTA Validator"
     authors:
       - family-names: Zhang
-        given-names: My
+        given-names: Mingyuan
     year: 2026
     url: "https://github.com/Zmy0912/Seq_ChuLi/tree/main/fasta_validator"
   - type: software
     title: "GenBank to MVISTA Converter"
     authors:
       - family-names: Zhang
-        given-names: My
+        given-names: Mingyuan
     year: 2026
     url: "https://github.com/Zmy0912/Seq_ChuLi/tree/main/genbank_to_mvista_converter"
   - type: software
     title: "Heatmap Visualizer"
     authors:
       - family-names: Zhang
-        given-names: My
+        given-names: Mingyuan
     year: 2026
     url: "https://github.com/Zmy0912/Seq_ChuLi/tree/main/Heatmap"
   - type: software
     title: "MISA Tool"
     authors:
       - family-names: Zhang
-        given-names: My
+        given-names: Mingyuan
     year: 2026
     url: "https://github.com/Zmy0912/Seq_ChuLi/tree/main/MISAtool"
   - type: software
     title: "Sequence Tool"
     authors:
       - family-names: Zhang
-        given-names: My
+        given-names: Mingyuan
     year: 2026
     url: "https://github.com/Zmy0912/Seq_ChuLi/tree/main/Seqtool"
