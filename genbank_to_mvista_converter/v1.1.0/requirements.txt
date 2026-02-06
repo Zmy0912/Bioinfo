@@ -1,0 +1,2 @@
+biopython>=1.81
+PyQt5>=5.15.0
