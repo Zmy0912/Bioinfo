@@ -3,7 +3,7 @@
 
 cff-version: 1.2.0
 title: >-
-  Bioinfo: tools for biological sequence data processing and
+  Bioinfo: software package for biological sequence data processing and
   analysis.
 message: >-
   If you use this software, please cite it using the
@@ -25,5 +25,5 @@ keywords:
 license: MIT
 commit: >-
   sha256:fa490a21550961881205451a1e62fc935a15e454e8b0e704f1257ea6c5285539
-version: v1.1.1
-date-released: '2026-02-04'
+version: v1.2.1
+date-released: '2026-02-09'
