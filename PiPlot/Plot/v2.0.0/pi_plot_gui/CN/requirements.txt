@@ -1,0 +1,14 @@
+# Pi 滑动窗口基因标注程序 - 图形化界面版本依赖项
+# Python 版本要求: >= 3.6
+
+# 数据处理库
+pandas>=1.3.0
+
+# 数值计算库
+numpy>=1.20.0
+
+# 绘图库
+matplotlib>=3.3.0
+
+# tkinter (通常随Python一起安装)
+# 如果没有安装，需要安装 python-tk 或 tkinter
