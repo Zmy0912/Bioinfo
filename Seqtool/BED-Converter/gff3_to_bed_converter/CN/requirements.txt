@@ -1,0 +1,6 @@
+# GFF3 to BED Converter 依赖包
+# 本程序主要使用Python标准库，无需额外安装依赖
+
+# 如果需要其他功能，可以添加以下包:
+# numpy>=1.21.0
+# pandas>=1.3.0

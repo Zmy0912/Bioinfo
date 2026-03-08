@@ -1,0 +1,50 @@
+##gff-version 3
+##sequence-region chr1 1 100000000
+##source-version Ensembl 100
+##source-date 2026-03-08
+
+# Example GFF3 file for testing the coordinate converter
+# This file contains sample gene annotations
+
+chr1	Ensembl	gene	61386544	61389501	.	+	.	ID=gene:AO001;gene_id=AoNCED1;Name=NCED1
+chr1	Ensembl	mRNA	61386544	61389501	.	+	.	ID=transcript:AO001.1;Parent=gene:AO001;gene_id=AoNCED1;Name=NCED1-1
+chr1	Ensembl	exon	61388988	61389501	.	+	.	ID=exon:AO001.1.1;Parent=transcript:AO001.1;gene_id=AoNCED1
+chr1	Ensembl	exon	61387536	61387539	.	+	.	ID=exon:AO001.1.2;Parent=transcript:AO001.1;gene_id=AoNCED1
+chr1	Ensembl	exon	61386951	61387130	.	+	.	ID=exon:AO001.1.3;Parent=transcript:AO001.1;gene_id=AoNCED1
+chr1	Ensembl	exon	61386816	61386894	.	+	.	ID=exon:AO001.1.4;Parent=transcript:AO001.1;gene_id=AoNCED1
+chr1	Ensembl	exon	61386654	61386735	.	+	.	ID=exon:AO001.1.5;Parent=transcript:AO001.1;gene_id=AoNCED1
+chr1	Ensembl	exon	61386544	61386556	.	+	.	ID=exon:AO001.1.6;Parent=transcript:AO001.1;gene_id=AoNCED1
+chr1	Ensembl	CDS	61388988	61389502	.	+	0	ID=CDS:AO001.1.1;Parent=transcript:AO001.1;gene_id=AoNCED1
+chr1	Ensembl	CDS	61387536	61387539	.	+	1	ID=CDS:AO001.1.2;Parent=transcript:AO001.1;gene_id=AoNCED1
+chr1	Ensembl	CDS	61386951	61387130	.	+	0	ID=CDS:AO001.1.3;Parent=transcript:AO001.1;gene_id=AoNCED1
+chr1	Ensembl	CDS	61386816	61386894	.	+	0	ID=CDS:AO001.1.4;Parent=transcript:AO001.1;gene_id=AoNCED1
+chr1	Ensembl	CDS	61386654	61386735	.	+	2	ID=CDS:AO001.1.5;Parent=transcript:AO001.1;gene_id=AoNCED1
+chr1	Ensembl	CDS	61386544	61386556	.	+	1	ID=CDS:AO001.1.6;Parent=transcript:AO001.1;gene_id=AoNCED1
+
+chr1	Ensembl	gene	80037544	80039670	.	-	.	ID=gene:AO002;gene_id=AoNCED2;Name=NCED2
+chr1	Ensembl	mRNA	80037544	80039670	.	-	.	ID=transcript:AO002.1;Parent=gene:AO002;gene_id=AoNCED2;Name=NCED2-1
+chr1	Ensembl	exon	80038999	80039670	.	-	.	ID=exon:AO002.1.1;Parent=transcript:AO002.1;gene_id=AoNCED2
+chr1	Ensembl	exon	80038868	80038997	.	-	.	ID=exon:AO002.1.2;Parent=transcript:AO002.1;gene_id=AoNCED2
+chr1	Ensembl	exon	80038825	80038866	.	-	.	ID=exon:AO002.1.3;Parent=transcript:AO002.1;gene_id=AoNCED2
+chr1	Ensembl	exon	80038204	80038823	.	-	.	ID=exon:AO002.1.4;Parent=transcript:AO002.1;gene_id=AoNCED2
+chr1	Ensembl	exon	80037544	80038202	.	-	.	ID=exon:AO002.1.5;Parent=transcript:AO002.1;gene_id=AoNCED2
+chr1	Ensembl	CDS	80038999	80039655	.	-	0	ID=CDS:AO002.1.1;Parent=transcript:AO002.1;gene_id=AoNCED2
+chr1	Ensembl	CDS	80038868	80038997	.	-	1	ID=CDS:AO002.1.2;Parent=transcript:AO002.1;gene_id=AoNCED2
+chr1	Ensembl	CDS	80038825	80038866	.	-	0	ID=CDS:AO002.1.3;Parent=transcript:AO002.1;gene_id=AoNCED2
+chr1	Ensembl	CDS	80038204	80038823	.	-	0	ID=CDS:AO002.1.4;Parent=transcript:AO002.1;gene_id=AoNCED2
+chr1	Ensembl	CDS	80037734	80038202	.	-	1	ID=CDS:AO002.1.5;Parent=transcript:AO002.1;gene_id=AoNCED2
+
+chr2	Ensembl	gene	136966749	136971011	.	+	.	ID=gene:AO003;gene_id=AoNCED3;Name=NCED3
+chr2	Ensembl	mRNA	136966749	136971011	.	+	.	ID=transcript:AO003.1;Parent=gene:AO003;gene_id=AoNCED3;Name=NCED3-1
+chr2	Ensembl	exon	136966749	136966809	.	+	.	ID=exon:AO003.1.1;Parent=transcript:AO003.1;gene_id=AoNCED3
+chr2	Ensembl	exon	136968056	136968184	.	+	.	ID=exon:AO003.1.2;Parent=transcript:AO003.1;gene_id=AoNCED3
+chr2	Ensembl	exon	136968899	136969258	.	+	.	ID=exon:AO003.1.3;Parent=transcript:AO003.1;gene_id=AoNCED3
+chr2	Ensembl	exon	136969653	136969735	.	+	.	ID=exon:AO003.1.4;Parent=transcript:AO003.1;gene_id=AoNCED3
+chr2	Ensembl	exon	136969924	136970247	.	+	.	ID=exon:AO003.1.5;Parent=transcript:AO003.1;gene_id=AoNCED3
+chr2	Ensembl	exon	136970648	136971011	.	+	.	ID=exon:AO003.1.6;Parent=transcript:AO003.1;gene_id=AoNCED3
+chr2	Ensembl	CDS	136966749	136966809	.	+	0	ID=CDS:AO003.1.1;Parent=transcript:AO003.1;gene_id=AoNCED3
+chr2	Ensembl	CDS	136968056	136968184	.	+	2	ID=CDS:AO003.1.2;Parent=transcript:AO003.1;gene_id=AoNCED3
+chr2	Ensembl	CDS	136968899	136969258	.	+	2	ID=CDS:AO003.1.3;Parent=transcript:AO003.1;gene_id=AoNCED3
+chr2	Ensembl	CDS	136969653	136969735	.	+	2	ID=CDS:AO003.1.4;Parent=transcript:AO003.1;gene_id=AoNCED3
+chr2	Ensembl	CDS	136969924	136970247	.	+	0	ID=CDS:AO003.1.5;Parent=transcript:AO003.1;gene_id=AoNCED3
+chr2	Ensembl	CDS	136970648	136970791	.	+	0	ID=CDS:AO003.1.6;Parent=transcript:AO003.1;gene_id=AoNCED3
